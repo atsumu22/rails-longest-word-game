@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="title">
+    <h1>New game</h1>
+  </div>
+  <div class="items">
+    <ul class="list-inline">
+      <% @alphabets.each do |alphabet| %>
+      <li><%= alphabet %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="text-center">
+    <form action="/score" method="get" data-turbo="false">
+      <label for="longestword">What is the longest word you can find?</label>
+      <input class="form-control" id="longestword" name="longestword" type="text">
+      <input class="btn btn-primary" type="submit" value="play">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :token, @alphabets %>
+    </form>
+  </div>
+</div>
